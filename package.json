@@ -1,5 +1,5 @@
 {
-  "name": "wfe_modeler",
+  "name": "wf_modeler",
   "version": "1.0.0",
   "description": "work flow modeler",
   "main": "index.js",
@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/saeedshokoohi/wfe_modeler.git"
+    "url": "https://github.com/saeedshokoohi/wf_modeler.git"
   },
   "keywords": [
     "acciocode",
@@ -30,7 +30,7 @@
   "author": "Saeed shokoohi",
   "license": "BSD-2-Clause",
   "bugs": {
-    "url": "https://github.com/saeedshokoohi/wfe_modeler"
+    "url": "https://github.com/saeedshokoohi/wf_modeler"
   },
-  "homepage": "https://github.com/saeedshokoohi/wfe_modeler"
+  "homepage": "https://github.com/saeedshokoohi/wf_modeler"
 }

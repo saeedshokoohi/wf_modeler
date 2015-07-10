@@ -7,16 +7,29 @@ module.exports = function (grunt)
 				separator: "\n\n"
 			},
 			dist: {
-				src: ['src/resources/js/binding.js','src/resources/js/binding2.js'],
+				src: [
+					'src/resources/js/modeler/controller/jquery.ui.touch-punch-0.2.2.min.js',
+					'src/resources/js/modeler/controller/jquery-1.9.0-min.js',
+					'src/resources/js/modeler/controller/jquery-ui-1.9.2.min.js',
+					'src/resources/js/modeler/controller/jquery.jsPlumb-1.7.5.js',
+					'src/resources/js/modeler/controller/modeler_controller.js',
+					'src/resources/js/modeler/directives/modeler_directive.js',
+					'src/resources/js/modeler/services/modeler_service.js'
+
+				     ],
+
 				dest: 'src/resources/js/<%= pkg.name %>.js'
 			},
 
 			deps: {
 				src: [
 					'bower_components/modernizr/modernizr.js',
-					'bower_components/jquery/dist/jquery.min.js',
+					'bower_components/jquery/dist/jquery.js',
 					'bower_components/bootstrap/dist/js/bootstrap.min.js',
-					'bower_components/angularjs/angular.min.js',
+					'bower_components/angularjs/angular.min.js'
+					,
+
+
 				],
 				dest: 'src/resources/js/<%= pkg.name %>-deps.js'
 			},
@@ -24,7 +37,7 @@ module.exports = function (grunt)
 				src: ['bower_components/bootstrap/dist/css/bootstrap.min.css',
 						'src/resources/css/styles.css'
 				],
-				dest: 'src/resources/css/<%= pkg.name %>.css'
+				dest: 'src/resources/css/wf_modeler.css'
 			}
 		},
 

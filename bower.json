@@ -1,5 +1,5 @@
 {
-  "name": "Work Flow Modeler",
+  "name": "wfmodeler",
   "version": "1.0.0",
   "homepage": "https://github.com/saeedshokoohi/wfe_modeler",
   "authors": [
@@ -31,6 +31,7 @@
     "angular-route": "~1.3.2",
     "bootstrap": "~3.3.0",
     "modernizr": "~2.8.3",
-    "jquery": "~2.1.1"
+    "jquery": "~2.1.1",
+    "gojs":"~1.5.2"
   }
 }
