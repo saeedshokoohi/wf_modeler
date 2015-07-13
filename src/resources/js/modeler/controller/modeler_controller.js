@@ -1,12 +1,12 @@
 
 /* use strict */
   var modeler=angular.module('modeler_module',[]);
-  modeler.controller('ModelerCtrl',function($scope){
+  modeler.controller('modeler_ctrl',['$scope',function($scope){
+
+ $scope.process="process name";
 
 
-
-
-  });
+  }]);
 
 jsPlumb.ready(function () {
     var instance = jsPlumb.getInstance({
