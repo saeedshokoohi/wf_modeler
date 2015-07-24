@@ -12,6 +12,7 @@ module.exports = function (grunt)
 					'src/resources/js/modeler/controller/jquery-1.9.0-min.js',
 					'src/resources/js/modeler/controller/jquery-ui-1.9.2.min.js',
 					'src/resources/js/modeler/controller/jquery.jsPlumb-1.7.5.js',
+					'src/resources/js/modeler/model/modeler_objects.js',
 					'src/resources/js/modeler/controller/modeler_controller.js',
 					'src/resources/js/modeler/directives/modeler_directive.js',
 					'src/resources/js/modeler/services/modeler_service.js'

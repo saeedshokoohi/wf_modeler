@@ -15,8 +15,10 @@
         <h1>Work Flow Model Designer for {{process}}</h1>
 <div id="designBox" class="wf_panel wf_mainpanel">
         <div class="wf_panel wf_toolbar">
-            <my-dialog>here</my-dialog>
-            <ng-model-item type="state" ></ng-model-item>
+
+            <div class="wf_inititem" >
+            <wf-process-node node_type="state" ></wf-process-node>
+            </div>
         <!--  <div class="wf_inititem" ng-model-item="state" ng-container="designBox">
               <svg class="wf_svg_inititem">
                   <rect y="15" height="50" width="120" fill="#8c8c8c" ></rect>
@@ -41,7 +43,7 @@
             <div class="wf_inititem"></div>
 
         </div>
-        <div class="wf_panel wf_designbox" >
+        <div id="model_container" class="wf_panel wf_designbox" >
 
             <div id="flowchart-demo" class="flowchart-demo"
                  style="width:600px; height:500px; ">

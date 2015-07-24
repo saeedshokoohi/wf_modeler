@@ -2,10 +2,12 @@ html, body {
     width: 100%;
     height: 100%;
     padding: 0;
-    margin: 0; }
+    margin: 0;
+}
+
 .demo {
     /* for IE10+ touch devices */
-    touch-action:none;
+    touch-action: none;
 }
 
 .flowchart-demo .window {
@@ -91,13 +93,13 @@ html, body {
 path, ._jsPlumb_endpoint {
     cursor: pointer;
 }
-.wf_panel
-{
+
+.wf_panel {
     border: solid 1px #515151;
     border-radius: 5px;
 }
-.wf_mainpanel
-{
+
+.wf_mainpanel {
     background-color: #515151;
     width: 1200px;
     height: 700px;
@@ -105,22 +107,23 @@ path, ._jsPlumb_endpoint {
     border-radius: 5px;
     margin: 30px;
 }
-.wf_toolbar
-{
+
+.wf_toolbar {
     background-color: #f7f7f9;
     float: right;
     width: 15%;
     height: 99%;
 }
-.wf_designbox
-{
+
+.wf_designbox {
     background-color: #f7f7f9;
     float: left;
     min-width: 80px;
     width: 84%;
     height: 99%;
 }
-.wf_inititem{
+
+.wf_inititem {
     border: solid 1px #e6e6e6;
     width: 98%;
     height: 90px;
@@ -129,8 +132,35 @@ path, ._jsPlumb_endpoint {
 
 }
 
-.wf_svg_inititem{
+.wf_added_item {
+    position: absolute;
+}
+
+.wf_node_instance {
+    position: absolute;
+}
+
+.wf_svg_inititem {
     width: 80px;
     height: 80px;
+
+}
+
+.wf_item_setting_bar {
+
+    width: 25px;
+    height: 100px;
+    float: right;
+    padding: 1px;
+    border: 1px solid #777777;
+    opacity: 0.2;
+
+}
+.wf_setting_anchor
+{
+
+}
+.wf_item_setting_bar :hover{
+    width: 40px;
 
 }

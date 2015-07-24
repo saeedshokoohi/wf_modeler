@@ -4,6 +4,8 @@
   modeler.controller('modeler_ctrl',['$scope',function($scope){
 
  $scope.process="process name";
+      $scope.process_nodes=[];
+      $scope.transition_rules=[];
 
 
   }]);
