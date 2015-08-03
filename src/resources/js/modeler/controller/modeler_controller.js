@@ -1,24 +1,26 @@
-
 /* use strict */
-  var modeler=angular.module('modeler_module',[]);
-  modeler.controller('modeler_ctrl',['$scope',function($scope){
+var modeler = angular.module('modeler_module', []);
+var firstNode = null;
+var secondNode = null;
+var instance = null;
+var commonConnector = null;
 
- $scope.process="process name";
-      $scope.process_nodes=[];
-      $scope.transition_rules=[];
+modeler.controller('modeler_ctrl', ['$scope', function ($scope) {
 
-
-  }]);
+    $scope.process = "process name";
+    $scope.process_nodes = [];
+    $scope.transition_rules = [];
+}]);
 
 jsPlumb.ready(function () {
-    var instance = jsPlumb.getInstance({
+     instance = jsPlumb.getInstance({
         // default drag options
-        DragOptions: { cursor: 'pointer', zIndex: 2000 },
+        DragOptions: {cursor: 'pointer', zIndex: 2000},
         // the overlays to decorate each connection with.  note that the label overlay uses a function to generate the label text; in this
         // case it returns the 'labelText' member that we set on each connection in the 'init' method below.
         ConnectionOverlays: [
-            [ "Arrow", { location: 1 } ],
-            [ "Label", {
+            ["Arrow", {location: 1}],
+            ["Label", {
                 location: 0.1,
                 id: "label",
                 cssClass: "aLabel"
@@ -27,9 +29,9 @@ jsPlumb.ready(function () {
         Container: "flowchart-demo"
     });
     var basicType = {
-        connector: "StateMachine",
-        paintStyle: { strokeStyle: "red", lineWidth: 2 },
-        hoverPaintStyle: { strokeStyle: "blue" },
+        connector: "Flowchart",
+        paintStyle: {strokeStyle: "red", lineWidth: 2},
+        hoverPaintStyle: {strokeStyle: "blue"},
         overlays: [
             "Arrow"
         ]
@@ -62,29 +64,29 @@ jsPlumb.ready(function () {
                 lineWidth: 1
             },
             isSource: true,
-            connector: [ "Flowchart", { stub: [40, 60], gap: 10, cornerRadius: 5, alwaysRespectStubs: true } ],
+            connector: ["Flowchart", {stub: [40, 60], gap: 10, cornerRadius: 5, alwaysRespectStubs: true}],
             connectorStyle: connectorPaintStyle,
             hoverPaintStyle: endpointHoverStyle,
             connectorHoverStyle: connectorHoverStyle,
             dragOptions: {},
             overlays: [
-                [ "Label", {
+                ["Label", {
                     location: [0.5, 1.5],
                     label: "Drag",
                     cssClass: "endpointSourceLabel"
-                } ]
+                }]
             ]
         },
     // the definition of target endpoints (will appear when the user drags a connection)
         targetEndpoint = {
             endpoint: "Blank",
-            paintStyle: { fillStyle: "#7AB02C", radius: 11 },
+            paintStyle: {fillStyle: "#7AB02C", radius: 11},
             hoverPaintStyle: endpointHoverStyle,
             maxConnections: -1,
-            dropOptions: { hoverClass: "hover", activeClass: "active" },
+            dropOptions: {hoverClass: "hover", activeClass: "active"},
             isTarget: true,
             overlays: [
-                [ "Label", { location: [0.5, -0.5], label: "Drop", cssClass: "endpointTargetLabel" } ]
+                ["Label", {location: [0.5, -0.5], label: "Drop", cssClass: "endpointTargetLabel"}]
             ]
         },
         init = function (connection) {
@@ -99,17 +101,17 @@ jsPlumb.ready(function () {
         }
         for (var j = 0; j < targetAnchors.length; j++) {
             var targetUUID = toId + targetAnchors[j];
-            instance.addEndpoint("Straight " + toId, targetEndpoint, { anchor: targetAnchors[j], uuid: targetUUID });
+            instance.addEndpoint("Straight " + toId, targetEndpoint, {anchor: targetAnchors[j], uuid: targetUUID});
         }
     };
-   var commonConnector= {
-       anchors: ["Right", "Left"],
-       endpoint: "Blank",
-       connector:"Straight",
-       endpointStyle: {fillStyle: "yellow"}
-   };
-    instance.connect({target:'first',source:'second'},commonConnector);
+    commonConnector = {
+        anchors: ["Right", "Left"],
+        endpoint: "Blank",
+        connector: "Straight",
+        endpointStyle: {fillStyle: "yellow"}
+    };
+    instance.connect({target: 'first', source: 'second'}, commonConnector);
 
-    instance.draggable(jsPlumb.getSelector(".flowchart-demo .window"), { grid: [20, 20] });
+    instance.draggable(jsPlumb.getSelector(".flowchart-demo .window"), {grid: [20, 20]});
 });
 

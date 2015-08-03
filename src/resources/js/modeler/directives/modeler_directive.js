@@ -15,17 +15,19 @@ modeler.directive("wfNodeInstanceState", [function () {
         replace: true,
         templateUrl: "/src/resources/js/partial_view/modeler_node_instance_state.html",
         link: function (scope, elem, attrs) {
-            debugger;
-            $(elem).draggable({container: $('#model_container')});
+          //  debugger;
+          //  $(elem).draggable({container: $('#model_container')});
             $(elem).css('left', attrs.left+'px');
             $(elem).css('top', attrs.top+'px');
+            $(elem).attr('id',attrs.id);
+            instance.draggable(jsPlumb.getSelector('.wf_node_instance'), {grid: [2, 2]});
         }
     };
 }]);
-var makeNodeTag = function ($compile, scope, nodeType) {
+var makeNodeTag = function ($compile, scope,id, nodeType) {
     console.log('<wf-node-instance-' + nodeType + '>');
-    debugger;
-    var $newElem = $compile('<wf-node-instance-' + nodeType + ' left=' + mouseX + ' top=' + mouseY + '>')(scope);
+   // debugger;
+    var $newElem = $compile('<wf-node-instance-' + nodeType + ' id='+id+'  left=' + mouseX + ' top=' + mouseY + '>')(scope);
     return $newElem;
 };
 var addElementToContainer = function (scope, $newElement) {
@@ -33,9 +35,15 @@ var addElementToContainer = function (scope, $newElement) {
 
 
 };
-var addNewNodeToProcessNodes = function (scope, nodeType) {
-    var newNode = new ProcessNode(123, "state2", nodeType);
+function generateNumber(s) {
+var n= s+Math.ceil(Math.random()*1000);
+    console.log('generated'+n);
+    return n;
+}
+var addNewNodeToProcessNodes = function (scope,id, nodeType) {
+    var newNode = new ProcessNode(id, "state2", nodeType);
     scope.process_nodes.push(newNode);
+    return newNode;
 };
 
 
@@ -52,14 +60,17 @@ modeler.directive("wfProcessNode", ['$compile', function ($compile) {
                 cursor: "move",
                 cursorAt: {top: -12, left: -20},
                 stop: function () {
-                    var $newElement = makeNodeTag($compile, scope, attrs.nodeType);
+                 //   debugger;
+                    var newId=generateNumber("state_");
+                    var $newElement = makeNodeTag($compile, scope,newId, attrs.nodeType);
+                    addNewNodeToProcessNodes(scope,newId, attrs.nodeType);
                     addElementToContainer(scope, $newElement);
-                    addNewNodeToProcessNodes(scope, attrs.nodeType);
+
                     console.log("new item added...");
                     console.log(scope.process_nodes.length);
                 },
                 helper: function (event) {
-                    return $("<div class='panel'>" + attrs.nodeType + 'here' + "</div>");
+                    return $("<div class='panel'>" + attrs.nodeType + ' drop here!' + "</div>");
                 }
             });
             /*elem.on("mousedown",function(event){
@@ -76,9 +87,31 @@ modeler.directive("wfProcessNode", ['$compile', function ($compile) {
 modeler.directive("wfItemSettingPart", [function () {
     return {
         restrict: "E",
+        replace:true,
         templateUrl: "/src/resources/js/partial_view/modeler_item_setting_part.html",
         link: function (scope, elem, attrs) {
+            elem.click(function() {
+                    console.log('setting part ...5');
+                    if (firstNode == null)
+                    {
+                        firstNode = elem.parents()[1];
+                    }
+                    else {
+                        debugger;
+                        secondNode = elem.parents()[1];
+                        instance.connect({
+                            target: secondNode.id,
+                            source: firstNode.id
+                        }, commonConnector);
+                        instance.draggable(jsPlumb.getSelector('.wf_node_instance'), {grid: [2, 2]});
+                        firstNode = null;
+                        secondNode = null;
+                    }
+                    ;
+                }
+            );
 
+         //   elem.click(function(){alert('kjdh2');});
         }
     };
 }]);

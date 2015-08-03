@@ -138,6 +138,7 @@ path, ._jsPlumb_endpoint {
 
 .wf_node_instance {
     position: absolute;
+
 }
 
 .wf_svg_inititem {
@@ -149,18 +150,29 @@ path, ._jsPlumb_endpoint {
 .wf_item_setting_bar {
 
     width: 25px;
-    height: 100px;
+    height: 99%;
     float: right;
     padding: 1px;
-    border: 1px solid #777777;
-    opacity: 0.2;
+    opacity: 0.07;
+    display: block;
+    background-color: #b3b3b3;
+    z-index: 5;
+    transition: 0.5s;
 
 }
 .wf_setting_anchor
 {
+    z-index: 4;
 
 }
-.wf_item_setting_bar :hover{
-    width: 40px;
+.wf_setting_anchor:hover
+{
+    z-index: 4;
+    background-color: #003399;
 
+}
+.wf_item_setting_bar:hover
+{
+    opacity: 0.9;
+    width: 26px;
 }
